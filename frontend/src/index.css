@@ -1,0 +1,7 @@
+body {
+  /* This file can be used for global resets or font imports */
+  /* All component and layout styles have been moved to App.css */
+  margin: 0;
+  padding: 50px;
+  box-sizing: border-box;
+}

@@ -1,0 +1,244 @@
+/* General page setup */
+body {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background-color: #111827; /* Fallback color */
+  background-image: radial-gradient(ellipse at top, #1f2937, #111827);
+  color: #e5e7eb; /* Brighter, near-white text for high contrast */
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 100px 15px; /* Increased top padding to push container down */
+}
+
+/* Container (main card) */
+.app-container {
+  background: #1f2937; /* Lighter Dark Gray */
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 1200px; /* Wider layout for better use of screen space */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  border: 1px solid #303744; /* Slightly darker border */
+}
+
+.app-container:hover {
+  border-color: #4b5563;
+}
+
+/* Title */
+.title {
+  text-align: left; /* Left-align for a more standard app layout */
+  color: #f9fafb; /* Off-white for high contrast */
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+/* Add task input section */
+.input-section {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 2.5rem;
+}
+
+.input-section input {
+  flex: 1;
+  padding: 14px 16px;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 2px solid #4b5563; /* Underline style */
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  color: #e5e7eb; /* Use new high-contrast text color */
+  transition: border-color 0.3s ease;
+}
+
+.input-section input:focus {
+  border-color: #3b82f6; /* New Blue accent on focus */
+}
+
+.input-section button {
+  padding: 12px 24px;
+  background: #3b82f6; /* New Blue accent */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+}
+
+.input-section button:hover {
+  background: #2563eb; /* Darker blue for hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.25);
+}
+
+/* Search bar + controls */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.controls input {
+  flex: 1;
+  min-width: 200px;
+  padding: 8px 12px;
+  border: 1px solid #4b5563;
+  border-radius: 8px;
+  outline: none;
+  background: #374151;
+  color: #e5e7eb; /* Use new high-contrast text color */
+  transition: all 0.2s;
+}
+
+.controls input:focus {
+  border-color: #3b82f6; /* Use new blue accent for consistency */
+  background: #1f2937;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  gap: 8px;
+}
+
+.filters button {
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: transparent;
+  color: #e5e7eb; /* Use new high-contrast text color */
+  font-weight: 500;
+  transition: all 0.25s;
+}
+
+.filters button.active {
+  background: #374151;
+  color: #f9fafb;
+}
+
+.filters button:hover:not(.active) {
+  background: #374151; /* Keep text bright on hover */
+  color: #e5e7eb;
+}
+
+/* Clear all button */
+.clear {
+  background: transparent;
+  color: #fca5a5; /* Muted red for destructive action */
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.clear:hover {
+  background: #ef444420; /* Subtle background on hover */
+  color: #f87171; /* Brighter red on hover */
+}
+
+/* Task list styling */
+.task-list {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* Remove gap for border-collapse effect */
+}
+
+.task-list li {
+  background: transparent;
+  padding: 14px 18px;
+  border-radius: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #374151; /* Separator line */
+  transition: background 0.2s ease;
+}
+
+.task-list li:hover {
+  background: #37415130; /* Subtle hover background */
+}
+
+.task-list li.completed span {
+  text-decoration: line-through;
+  color:#a9b1bb; /* Further brightened for better readability */
+}
+
+/* Custom checkbox-like circle for tasks */
+.task-list li span::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #9ca3af; /* Brighter border for checkbox */
+  margin-right: 15px;
+  vertical-align: middle;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.task-list li.completed span::before {
+  background-color: #3b82f6; /* Use new blue accent */
+  border-color: #3b82f6; /* Use new blue accent */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+  background-size: 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.task-list li span {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-weight: 500; /* Make task text bolder and more readable */
+  font-size: 1.05rem; /* Slightly increase font size for clarity */
+  cursor: text;
+  color: #e5e7eb;
+}
+
+/* Delete icon button */
+.task-list .delete {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #d1d5db; /* Brighter delete icon */
+  cursor: pointer;
+  margin-left: 12px;
+  transition: all 0.2s ease;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task-list .delete:hover {
+  color: #fca5a5;
+  background: #ef444430;
+}
+
+/* Empty list message */
+.empty-msg {
+  text-align: center;
+  color: #d1d5db; /* Brighter text for better readability */
+  margin-top: 3rem;
+  font-style: italic;
+  font-size: 1.05rem;
+}
